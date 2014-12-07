@@ -14,7 +14,7 @@
 					var weekday= new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
 					var weekday_color=new Array("#8F00D6","#FF1463","#FF3C14","#ECFF8F","#29FF70","#1AFFFF","#1A1AFF");
 					console.log(weekday_color[day]);
-					//document.getElementById("today").innerHTML="today is :"+Now.toLocaleString()+"("+weekday[day]+")";
+					document.getElementById("today").innerHTML="Now :"+Now.toString();
 					
 					$("#building img").css("background-color",weekday_color[day]);
 				
@@ -50,6 +50,9 @@
  			 #building img:hover{
  			 	background-color: black;
  			 }
+ 			 #today{
+ 			 	font-family: 'Raleway', sans-serif;
+ 			 }
 		</style>
 	</head>
 	<body>
@@ -58,7 +61,6 @@
 		<div id="building">
 			<img src="https://www.dropbox.com/s/704648tdx3sutpw/101Template.png?dl=0"></img>
 		</div>
-		
-
+	
 	</body>
 </html>
