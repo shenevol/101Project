@@ -1,19 +1,64 @@
+<!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
 		<title>What is today's Taipei 101?</title>
-		<script type="text/javascript"></script>
-		<script type="text/css">
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
+		<script type="text/javascript">
+			$(document).ready(function showDate(){
+					var Now= new Date();
+					var day=Now.getDay();
+					console.log(day);
+					console.log(Now);
+					var weekday= new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+					var weekday_color=new Array("#8F00D6","#FF1463","#FF3C14","#ECFF8F","#29FF70","#1AFFFF","#1A1AFF");
+					console.log(weekday_color[day]);
+					//document.getElementById("today").innerHTML="today is :"+Now.toLocaleString()+"("+weekday[day]+")";
+					
+					$("#building img").css("background-color",weekday_color[day]);
+				
+				});
+					
+		</script>
+		<style type="text/css">
 			body{
 				background-color:black;
 				color: white;
 			}
-		</script>
 
+		    #building img{
+				display: block;
+				margin: auto;
+				height: 400px;
+			}
+		
+			h1, #today{
+				text-align: center;
+			}
+			h1{
+				font-family: 'Oregano', cursive;
+			}
+			@-webkit-keyframes twinkling{	/*透明度由0到1*/
+				0%{
+					opacity:0;				/*透明度为0*/
+				}
+				100%{
+					opacity:1;				/*透明度为1*/
+				}
+			}
+ 			 #building img:hover{
+ 			 	background-color: black;
+ 			 }
+		</style>
 	</head>
-
 	<body>
-		<div></div>
-		<h1>Testing!</h1>
+		<h1>Today,Taipei 101 is shining for you as always...</h1>
+		<div id="today"></div>
+		<div id="building">
+			<img src="101Template.png"></img>
+		</div>
+		
 
 	</body>
 </html>
