@@ -10,11 +10,16 @@
 				var currentTime = new Date(),
 					today = currentTime.getDay(),
 					weekdayList = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
-					weekdayColorList = ['#8F00D6', '#FF1463', '#FF3C14', '#ECFF8F', '#29FF70', '#1AFFFF', '#1A1AFF'];
+					weekdayColorList = ['#8F00D6', '#FF1463', '#FF3C14', '#ECFF8F', '#29FF70', '#1AFFFF', '#1A1AFF'],
+					colorChange = setInterval(function () {
+						today = (today + 1) % 7;
+						$("#building img").css("background-color", weekdayColorList[today]);
+					}, 3000);
 
 					$("#building img").css("background-color", weekdayColorList[today]);
+					$('#today').text('Today is :' + currentTime.toLocaleString() + '(' + weekdayList[today] + ')');
 
-					//document.getElementById("today").innerHTML="today is :"+Now.toLocaleString()+"("+weekday[day]+")";
+					// clearInterval(colorChange);
 			});
 		</script>
 		<style type="text/css">
@@ -46,8 +51,8 @@
 				}
 			}
 
-			#building img:hover {
-				background-color: black;
+			#building img {
+				transition: background-color 1s ease-in-out;
 			}
 		</style>
 	</head>
@@ -55,7 +60,7 @@
 		<h1>Today,Taipei 101 is shining for you as always...</h1>
 		<div id="today"></div>
 		<div id="building">
-			<img src="101Template.png"></img>
+			<img src="101Template.png">
 		</div>
 	</body>
 </html>
