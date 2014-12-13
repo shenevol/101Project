@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 		<title>What is today"s Taipei 101?</title>
 		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 		<link href="http://fonts.googleapis.com/css?family=Oregano" rel="stylesheet" type="text/css">
@@ -9,14 +10,26 @@
 			$(document).ready(function () {
 				var currentTime = new Date(),
 					today = currentTime.getDay(),
+					hour = currentTime.getHours(),
 					weekdayList = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
 					weekdayColorList = ['#8F00D6', '#FF1463', '#FF3C14', '#ECFF8F', '#29FF70', '#1AFFFF', '#1A1AFF'],
 					colorChange = setInterval(function () {
 						today = (today + 1) % 7;
-						$("#building img").css("background-color", weekdayColorList[today]);
+						$("#taipei101").css("background-color", weekdayColorList[today]);
 					}, 3000);
+					// pictureChange=setInterval(function(){
+					//  	if ( 6 < = hour < = 18)
 
-					$("#building img").css("background-color", weekdayColorList[today]);
+					//  }),
+					if(hour>=6 && hour<=18)
+					{
+						$("h1").text("Now is the day");
+						$("#taipei101").attr("src","Taipei101day.jpg");
+						$("body").css("background-color",'#2894FF');
+					}
+					
+					console.log(currentTime.getHours());
+					$("#taipei101").css("background-color", weekdayColorList[today]);
 					$('#today').text('Today is :' + currentTime.toLocaleString() + '(' + weekdayList[today] + ')');
 
 					// clearInterval(colorChange);
@@ -28,10 +41,12 @@
 				color: white;
 			}
 
-		    #building img {
+		    #taipei101{
 				display: block;
 				margin: auto;
-				height: 400px;
+				height: 400 px;
+				max-width: 100%;
+				transition: background-color 1s ease-in-out;
 			}
 		
 			h1, #today {
@@ -51,16 +66,14 @@
 				}
 			}
 
-			#building img {
-				transition: background-color 1s ease-in-out;
-			}
 		</style>
 	</head>
 	<body>
 		<h1>Today,Taipei 101 is shining for you as always...</h1>
 		<div id="today"></div>
 		<div id="building">
-			<img src="101Template.png">
+			<img id="taipei101" src="101Template.png">
 		</div>
+		<video class="be-bg-video" autoplay="autoplay" loop="loop" muted="muted" preload="auto"><source src="http://kptaipei.tw/wp-content/uploads/2014/11/新政30hero.mp4" type="video/mp4"></video>
 	</body>
 </html>
